@@ -1,14 +1,8 @@
 import z from 'zod'
 
-const schema = z.object({
-	firstName: z
-		.string()
-		.min(1, { message: 'Please enter your first name' })
-		.trim(),
-	lastName: z
-		.string()
-		.min(1, { message: 'Please enter your last name' })
-		.trim(),
+export const schema = z.object({
+	firstName: z.string().min(3, { message: 'First name is required' }).trim(),
+	lastName: z.string().min(3, { message: 'Last name is required' }).trim(),
 })
 
 export type Schema = z.infer<typeof schema>

@@ -1,8 +1,8 @@
 'use client'
 
 import { PageLoader } from '@/components/loaders/page-loader'
+import { NoAccess } from '@/components/primitives/no-access'
 import { useSession } from '@/hooks/use-session'
-import Link from 'next/link'
 import { PropsWithChildren } from 'react'
 
 export const SessionProvider = ({ children }: PropsWithChildren) => {
@@ -12,13 +12,7 @@ export const SessionProvider = ({ children }: PropsWithChildren) => {
 		return <PageLoader />
 	}
 
-	if (isError)
-		return (
-			<div>
-				You don't have access to this page
-				<Link href='/sign-in'>Sign In</Link>
-			</div>
-		)
+	if (isError) return <NoAccess />
 
 	return <>{children}</>
 }

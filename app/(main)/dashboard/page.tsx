@@ -12,7 +12,7 @@ const DashboardPage = () => {
 		return <PageLoader />
 	}
 
-	if (!data?.teamId) {
+	if (!data?.workspaceId) {
 		return redirect('/onboarding')
 	}
 
