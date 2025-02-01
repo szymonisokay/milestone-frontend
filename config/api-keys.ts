@@ -7,4 +7,5 @@ export enum API_KEYS {
 	ONBOARDING_DETAILS = '/onboarding/details',
 	ONBOARDING_WORKSPACE = '/onboarding/workspace',
 	PROJECTS = '/projects',
+	SPRINTS = '/sprints',
 }

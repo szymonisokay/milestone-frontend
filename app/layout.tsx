@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
-import { Montserrat } from 'next/font/google'
+import { Inter } from 'next/font/google'
 
 import './globals.css'
 
 import { QueryClientProvider } from '@/providers/query-client.provider'
 import { ToasterProvider } from '@/providers/toaster.provider'
 
-const inter = Montserrat({
+const inter = Inter({
 	subsets: ['latin'],
-	weight: ['500', '700', '900'],
+	weight: ['500', '600', '700', '900'],
 })
 
 export const metadata: Metadata = {

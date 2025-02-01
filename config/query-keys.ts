@@ -3,4 +3,5 @@ export enum QUERY_KEYS {
 	USER = 'user',
 	CONFIGURATION = 'configuration',
 	PROJECTS = 'projects',
+	SPRINTS = 'sprints',
 }
