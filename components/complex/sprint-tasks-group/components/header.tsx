@@ -9,7 +9,7 @@ type Props = {
 
 export const Header = ({ name, goal, tasksCount }: Props) => {
 	return (
-		<div className='flex items-center justify-between p-2'>
+		<div className='flex items-center justify-between py-2 px-4'>
 			<div className='flex items-center space-x-2'>
 				<Heading
 					title={name}

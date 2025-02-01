@@ -8,4 +8,5 @@ export enum API_KEYS {
 	ONBOARDING_WORKSPACE = '/onboarding/workspace',
 	PROJECTS = '/projects',
 	SPRINTS = '/sprints',
+	TASKS = '/tasks',
 }
