@@ -13,8 +13,8 @@ export const SprintTasksGroup = ({ sprint }: Props) => {
 
 	const { onAddTask } = useAddTask(id)
 
-	const onAddTaskToSprint = () => {
-		toast.promise(onAddTask(), {
+	const onAddTaskToSprint = (name: string) => {
+		toast.promise(onAddTask({ name }), {
 			loading: 'Creating task...',
 			success: () => 'Task created successfully!',
 			error: (error: HttpError) => error.message,

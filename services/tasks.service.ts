@@ -15,3 +15,9 @@ export const updateTask = async (sprintId: string, data?: UpdateTask) =>
 		url: `${API_KEYS.TASKS}/${sprintId}`,
 		data,
 	})
+
+export const deleteTask = async (sprintId: string, taskId: string) =>
+	await apiRequest<{ name: string }>({
+		method: 'DELETE',
+		url: `${API_KEYS.TASKS}/${sprintId}/${taskId}`,
+	})

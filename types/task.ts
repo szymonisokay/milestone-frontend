@@ -1,12 +1,12 @@
 export type Task = {
 	id: string
 	identifier: string
-	name?: string
+	name: string
 	description?: string
 }
 
 export type AddTask = {
-	sprintId: string
+	name: string
 }
 
 export type UpdateTask = {
