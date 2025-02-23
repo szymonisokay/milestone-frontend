@@ -1,6 +1,12 @@
 import { API_KEYS } from '@/config/api-keys'
-import { AddTask, UpdateTask } from '@/types/task'
+import { AddTask, Task, UpdateTask } from '@/types/task'
 import { apiRequest } from '@/utils/request'
+
+export const getTask = async (sprintId: string, taskId: string) =>
+	await apiRequest<Task>({
+		method: 'GET',
+		url: `${API_KEYS.TASKS}/${sprintId}/${taskId}`,
+	})
 
 export const addTask = async (sprintId: string, data?: AddTask) =>
 	await apiRequest<{ name: string }>({
@@ -10,7 +16,7 @@ export const addTask = async (sprintId: string, data?: AddTask) =>
 	})
 
 export const updateTask = async (sprintId: string, data?: UpdateTask) =>
-	await apiRequest<{ name: string }>({
+	await apiRequest<Task>({
 		method: 'PATCH',
 		url: `${API_KEYS.TASKS}/${sprintId}`,
 		data,

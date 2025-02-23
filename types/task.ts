@@ -10,7 +10,7 @@ export type AddTask = {
 }
 
 export type UpdateTask = {
-	taskId: string
+	id: string
 	name?: string
 	description?: string
 }

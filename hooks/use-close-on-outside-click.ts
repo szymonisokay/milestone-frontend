@@ -1,18 +1,29 @@
 import { useEffect, useRef } from 'react'
 
 export const useCloseOnOutsideClick = <T extends HTMLElement>(
-	callback: () => void
+	callback: () => void,
+	elementsToExclude: string[] = []
 ) => {
 	const elementRef = useRef<T | null>(null)
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
+			const elements = [
+				...elementsToExclude
+					.map((selector) =>
+						[...document.querySelectorAll(selector)].flat()
+					)
+					.flat(),
+			]
+
 			if (
 				elementRef.current &&
-				!elementRef.current.contains(event.target as Node)
+				!elementRef.current.contains(event.target as Node) &&
+				!elements.some((element) =>
+					element.contains(event.target as Node)
+				)
 			) {
 				callback()
-				elementRef.current = null
 			}
 		}
 
@@ -20,7 +31,7 @@ export const useCloseOnOutsideClick = <T extends HTMLElement>(
 
 		return () =>
 			document.removeEventListener('mousedown', handleClickOutside)
-	}, [callback])
+	}, [callback, elementsToExclude])
 
 	return { ref: elementRef }
 }
