@@ -16,11 +16,11 @@ export const useUpdateTask = (sprintId: string) => {
 			const previousTask = queryClient.getQueryData<UpdateTask[]>([
 				QUERY_KEYS.TASKS,
 				task.id,
-			])
+			]) as unknown as UpdateTask
 
 			const newTask = {
 				...previousTask,
-				name: task.name,
+				name: task.name ?? previousTask?.name,
 				id: task.id,
 			}
 
