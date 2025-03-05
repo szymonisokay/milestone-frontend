@@ -10,7 +10,8 @@ export const TaskDescription = () => {
 
 	return (
 		<HtmlEditor
-			content={task?.description ?? '<p>Hello World!</p>'}
+			label='Description'
+			content={task?.description ?? ''}
 			components={{ wrapper: { className: 'mt-4' } }}
 			onSave={(description) =>
 				onUpdateTask({ description, id: task?.id as string })

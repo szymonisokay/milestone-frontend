@@ -57,7 +57,7 @@ export const TaskName = () => {
 	}, [task?.name])
 
 	return (
-		<div className='relative mt-4 mx-[-12px] h-[36px] hover:bg-gray-100 transition-all duration-300 rounded-[10px]'>
+		<div className='relative mt-4 mx-[-12px] lg:mr-0 h-[36px] hover:bg-gray-100 transition-all duration-300 rounded-[10px]'>
 			{isEditing ? (
 				<>
 					<Input
@@ -68,7 +68,7 @@ export const TaskName = () => {
 						aria-invalid={!inputValue}
 						className='text-[22px] font-semibold'
 					/>
-					<div className='absolute right-0 flex items-center justify-end gap-2 top-11'>
+					<div className='absolute right-0 flex items-center justify-end gap-2 top-11 z-10'>
 						<Button
 							onClick={onSaveEditMode}
 							className='w-8 h-8 p-0 bg-white action hover:bg-slate-50/70 text-primary shadow-simple'

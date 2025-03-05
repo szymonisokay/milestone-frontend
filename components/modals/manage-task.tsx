@@ -48,7 +48,8 @@ export const ManageTaskModal = () => {
 			<DialogContent
 				onEscapeKeyDown={onEscapeKeyDown}
 				onOpenAutoFocus={onOpenAutoFocus}
-				className='top-4 right-4 max-w-[50%] left-auto h-[calc(100dvh-32px)] translate-x-0 translate-y-0 data-[state=closed]:slide-out-to-right-1/2 data-[state=closed]:slide-out-to-top-0 data-[state=open]:slide-in-from-right-1/2 data-[state=open]:slide-in-from-top-0'
+				// className='md:top-4 md:right-4 lg:max-w-[50%] md:left-auto h-full sm:h-[90%] md:h-[calc(100dvh-32px)] md:translate-x-0 md:translate-y-0 data-[state=closed]:slide-out-to-right-1/2 data-[state=closed]:slide-out-to-top-0 data-[state=open]:slide-in-from-right-1/2 data-[state=open]:slide-in-from-top-0'
+				className='w-full sm:w-[90%] md:w-[80%] max-w-[unset] h-full sm:h-[auto]'
 			>
 				<DialogTitle className='sr-only'>Manage task</DialogTitle>
 				<DialogDescription className='sr-only'>

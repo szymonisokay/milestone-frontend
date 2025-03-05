@@ -17,10 +17,13 @@ export const ManageTask = () => {
 	]
 
 	return (
-		<div>
-			<Breadcrumbs items={items} />
-			<TaskName />
-			<TaskDescription />
+		<div className='grid lg:grid-cols-[3fr_2fr] gap-4'>
+			<div className='main-content'>
+				<Breadcrumbs items={items} />
+				<TaskName />
+				<TaskDescription />
+			</div>
+			<div className='side-content'>sadasd</div>
 		</div>
 	)
 }
