@@ -2,28 +2,38 @@ import { API_KEYS } from '@/config/api-keys'
 import { AddTask, Task, UpdateTask } from '@/types/task'
 import { apiRequest } from '@/utils/request'
 
+export const getTasks = async (sprintId: string) =>
+	await apiRequest<Task[]>({
+		method: 'GET',
+		url: `${API_KEYS.SPRINTS}/${sprintId}/tasks`,
+	})
+
 export const getTask = async (sprintId: string, taskId: string) =>
 	await apiRequest<Task>({
 		method: 'GET',
-		url: `${API_KEYS.TASKS}/${sprintId}/${taskId}`,
+		url: `${API_KEYS.SPRINTS}/${sprintId}/tasks/${taskId}`,
 	})
 
-export const addTask = async (sprintId: string, data?: AddTask) =>
-	await apiRequest<{ name: string }>({
+export const addTask = async (sprintId: string, data: AddTask) =>
+	await apiRequest<Task>({
 		method: 'POST',
-		url: `${API_KEYS.TASKS}/${sprintId}`,
+		url: `${API_KEYS.SPRINTS}/${sprintId}/tasks`,
 		data,
 	})
 
-export const updateTask = async (sprintId: string, data?: UpdateTask) =>
+export const updateTask = async (
+	sprintId: string,
+	taskId: string,
+	data: UpdateTask
+) =>
 	await apiRequest<Task>({
 		method: 'PATCH',
-		url: `${API_KEYS.TASKS}/${sprintId}`,
+		url: `${API_KEYS.SPRINTS}/${sprintId}/tasks/${taskId}`,
 		data,
 	})
 
 export const deleteTask = async (sprintId: string, taskId: string) =>
 	await apiRequest<{ name: string }>({
 		method: 'DELETE',
-		url: `${API_KEYS.TASKS}/${sprintId}/${taskId}`,
+		url: `${API_KEYS.SPRINTS}/${sprintId}/tasks/${taskId}`,
 	})

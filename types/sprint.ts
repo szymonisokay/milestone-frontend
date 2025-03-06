@@ -1,5 +1,3 @@
-import { Task } from '@/types/task'
-
 export type Sprint = {
 	id: string
 	name: string
@@ -8,7 +6,6 @@ export type Sprint = {
 	endDate: string | null
 	isActive: boolean
 	isCompleted: boolean
-	tasks: Task[]
 }
 
 export type SprintsResponse = Sprint[]

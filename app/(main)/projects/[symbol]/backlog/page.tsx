@@ -5,7 +5,8 @@ import { useParams } from 'next/navigation'
 
 import { BreadcrumbItem } from '@/components/complex/breadcrumbs/types'
 import { PageHeader } from '@/components/complex/page-header'
-import { SprintTasksGroup } from '@/components/complex/sprint-tasks-group'
+import { SprintTasks } from '@/components/complex/sprint-tasks'
+import { SprintTasksProvider } from '@/components/complex/sprint-tasks/sprint-tasks-provider'
 import { useProject } from '@/hooks/projects/use-project'
 import { useSprints } from '@/hooks/sprints/use-sprints'
 
@@ -31,7 +32,9 @@ const BacklogPage = () => {
 			<PageHeader breadcrumbs={breadcrumbs} title='Backlog' />
 			<div className='p-4 space-y-4 h-[calc(100dvh-105px)] overflow-y-auto'>
 				{sprints?.map((sprint) => (
-					<SprintTasksGroup key={sprint.id} sprint={sprint} />
+					<SprintTasksProvider key={sprint.id} sprint={sprint}>
+						<SprintTasks />
+					</SprintTasksProvider>
 				))}
 			</div>
 		</>

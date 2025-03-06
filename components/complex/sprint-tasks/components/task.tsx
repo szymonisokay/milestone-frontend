@@ -1,9 +1,11 @@
-import { Menu } from '@/components/complex/sprint-tasks-group/components/menu'
+import { MoreVerticalIcon } from 'lucide-react'
+
 import { Text } from '@/components/primitives/text'
 import { Button } from '@/components/ui/button'
 import { useModal } from '@/hooks/use-modal'
 import { Task as TaskType } from '@/types/task'
-import { MoreVerticalIcon } from 'lucide-react'
+
+import { Menu } from './menu'
 
 type Props = {
 	sprintId: string

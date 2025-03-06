@@ -9,7 +9,7 @@ type Props = {
 
 export const useTask = ({ taskId, sprintId }: Props) => {
 	const { data, isLoading } = useQuery({
-		queryKey: [QUERY_KEYS.TASKS, taskId],
+		queryKey: [QUERY_KEYS.TASKS, sprintId, taskId],
 		queryFn: () => getTask(sprintId as string, taskId as string),
 		enabled: !!taskId && !!sprintId,
 	})

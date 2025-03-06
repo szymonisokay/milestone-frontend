@@ -8,7 +8,9 @@ export const useDeleteTask = (sprintId: string) => {
 	const { mutateAsync, isPending } = useMutation({
 		mutationFn: (taskId: string) => deleteTask(sprintId, taskId),
 		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.SPRINTS] })
+			queryClient.invalidateQueries({
+				queryKey: [QUERY_KEYS.TASKS, sprintId],
+			})
 		},
 	})
 

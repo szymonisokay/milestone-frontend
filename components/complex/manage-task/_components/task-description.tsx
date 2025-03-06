@@ -4,7 +4,7 @@ import { useUpdateTask } from '@/hooks/tasks/use-update-task'
 
 export const TaskDescription = () => {
 	const { task, isLoading, sprintId } = useManageTaskContext()
-	const { onUpdateTask } = useUpdateTask(sprintId)
+	const { onUpdateTask } = useUpdateTask(sprintId, task?.id as string)
 
 	if (isLoading) return null
 
@@ -13,9 +13,7 @@ export const TaskDescription = () => {
 			label='Description'
 			content={task?.description ?? ''}
 			components={{ wrapper: { className: 'mt-4' } }}
-			onSave={(description) =>
-				onUpdateTask({ description, id: task?.id as string })
-			}
+			onSave={(description) => onUpdateTask({ description })}
 		/>
 	)
 }

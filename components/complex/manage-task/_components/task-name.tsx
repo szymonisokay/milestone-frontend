@@ -10,7 +10,7 @@ import { useCloseOnOutsideClick } from '@/hooks/use-close-on-outside-click'
 
 export const TaskName = () => {
 	const { task, sprintId } = useManageTaskContext()
-	const { onUpdateTask } = useUpdateTask(sprintId)
+	const { onUpdateTask } = useUpdateTask(sprintId, task?.id as string)
 
 	const [isEditing, setIsEditing] = useState(false)
 	const [inputValue, setInputValue] = useState<string>(task?.name ?? '')
@@ -18,7 +18,7 @@ export const TaskName = () => {
 	const onSaveEditMode = () => {
 		if (!inputValue) return
 
-		onUpdateTask({ name: inputValue, id: task?.id as string })
+		onUpdateTask({ name: inputValue })
 		setIsEditing(false)
 	}
 

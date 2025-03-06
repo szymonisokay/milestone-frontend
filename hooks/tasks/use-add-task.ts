@@ -7,13 +7,15 @@ export const useAddTask = (sprintId: string) => {
 	const queryClient = useQueryClient()
 
 	const { mutateAsync, isPending } = useMutation({
-		mutationFn: (data?: AddTask) => addTask(sprintId, data),
+		mutationFn: (data: AddTask) => addTask(sprintId, data),
 		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.SPRINTS] })
+			queryClient.invalidateQueries({
+				queryKey: [QUERY_KEYS.TASKS, sprintId],
+			})
 		},
 	})
 
-	const onAddTask = async (data?: AddTask) => await mutateAsync(data)
+	const onAddTask = async (data: AddTask) => await mutateAsync(data)
 
 	return {
 		onAddTask,

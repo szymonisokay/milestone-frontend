@@ -1,13 +1,14 @@
+import { useSprintTasksContext } from '@/components/complex/sprint-tasks/sprint-tasks-provider'
 import { Heading } from '@/components/primitives/heading'
 import { Button } from '@/components/ui/button'
 
-type Props = {
-	name: string
-	goal?: string
-	tasksCount: number
-}
+export const Header = () => {
+	const {
+		sprint: { name, goal },
+		tasks,
+	} = useSprintTasksContext()
+	const tasksCount = tasks.length
 
-export const Header = ({ name, goal, tasksCount }: Props) => {
 	return (
 		<div className='flex items-center justify-between py-2 px-4'>
 			<div className='flex items-center space-x-2'>
