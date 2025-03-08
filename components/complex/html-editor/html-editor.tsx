@@ -1,7 +1,8 @@
-import Uderline from '@tiptap/extension-underline'
+import Placeholder from '@tiptap/extension-placeholder'
+import Underline from '@tiptap/extension-underline'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import { ComponentProps, useState } from 'react'
+import { ComponentProps, useMemo, useState } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -9,21 +10,31 @@ import { Controls } from './controls'
 import { Header } from './header'
 import { MainMenu } from './menus/main-menu'
 
-const extensions = [StarterKit, Uderline]
-
 type Components = {
 	wrapper?: ComponentProps<'div'>
 }
 
 type Props = {
 	content: string
+	placeholder?: string
 	components?: Components
 	label?: string
 	onSave: (content: string) => void
 }
 
-const HtmlEditor = ({ content, components, label, onSave }: Props) => {
+const HtmlEditor = ({
+	content,
+	placeholder,
+	components,
+	label,
+	onSave,
+}: Props) => {
 	const [isFocused, setIsFocused] = useState(false)
+
+	const extensions = useMemo(
+		() => [StarterKit, Underline, Placeholder.configure({ placeholder })],
+		[placeholder]
+	)
 
 	const editor = useEditor({
 		extensions,
@@ -52,7 +63,11 @@ const HtmlEditor = ({ content, components, label, onSave }: Props) => {
 		<div {...components?.wrapper}>
 			<Header label={label} />
 			{isFocused && <MainMenu editor={editor} />}
-			<EditorContent editor={editor} onFocus={() => setIsFocused(true)} />
+			<EditorContent
+				editor={editor}
+				placeholder='place'
+				onFocus={() => setIsFocused(true)}
+			/>
 			{isFocused && (
 				<Controls
 					editor={editor}
