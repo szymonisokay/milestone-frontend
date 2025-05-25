@@ -12,6 +12,7 @@ export const useTask = ({ taskId, sprintId }: Props) => {
 		queryKey: [QUERY_KEYS.TASKS, sprintId, taskId],
 		queryFn: () => getTask(sprintId as string, taskId as string),
 		enabled: !!taskId && !!sprintId,
+		staleTime: 60 * 1000,
 	})
 
 	return {

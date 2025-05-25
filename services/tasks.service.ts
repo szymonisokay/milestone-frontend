@@ -1,5 +1,5 @@
 import { API_KEYS } from '@/config/api-keys'
-import { AddTask, Task, UpdateTask } from '@/types/task'
+import { AddTask, Task, TaskStatus, UpdateTask } from '@/types/task'
 import { apiRequest } from '@/utils/request'
 
 export const getTasks = async (sprintId: string) =>
@@ -36,4 +36,12 @@ export const deleteTask = async (sprintId: string, taskId: string) =>
 	await apiRequest<{ name: string }>({
 		method: 'DELETE',
 		url: `${API_KEYS.SPRINTS}/${sprintId}/tasks/${taskId}`,
+	})
+
+export const getTaskStatus = async (workspaceId?: string) =>
+	await apiRequest<TaskStatus[]>({
+		method: 'GET',
+		url: `${API_KEYS.SPRINTS}/tasks/status${
+			workspaceId ? `?workspaceId=${workspaceId}` : ''
+		}`,
 	})

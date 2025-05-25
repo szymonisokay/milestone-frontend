@@ -5,4 +5,5 @@ export enum QUERY_KEYS {
 	PROJECTS = 'projects',
 	SPRINTS = 'sprints',
 	TASKS = 'tasks',
+	TASK_STATUS = 'task-status',
 }

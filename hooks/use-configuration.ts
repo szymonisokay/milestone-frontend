@@ -7,6 +7,7 @@ export const useConfiguration = () => {
 	const { data, isLoading } = useQuery({
 		queryKey: [QUERY_KEYS.CONFIGURATION],
 		queryFn: () => getConfiguration(),
+		staleTime: 60 * 60 * 1000,
 	})
 
 	return { data, isLoading }

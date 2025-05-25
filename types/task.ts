@@ -14,6 +14,7 @@ export type Task = {
 	description?: string
 	creator: Member
 	assignee?: Member | null
+	status: TaskStatus
 }
 
 export type AddTask = {
@@ -21,3 +22,10 @@ export type AddTask = {
 }
 
 export type UpdateTask = Omit<Partial<Task>, 'id' | 'identifier'>
+
+export type TaskStatus = {
+	id: string
+	name: string
+	isCustom: boolean
+	workspaceId: string | null
+}
