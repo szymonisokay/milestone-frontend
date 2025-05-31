@@ -10,19 +10,25 @@ import { TaskStatus } from '@/types/task'
 
 type Props = {
 	value: TaskStatus
+	onChange: (status: TaskStatus) => void
 }
 
-export const TaskStatusSelect = ({ value }: Props) => {
+export const TaskStatusSelect = ({ value, onChange }: Props) => {
 	const { statuses } = useTaskStatus()
 
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button variant='outline'>{value.name}</Button>
+				<Button variant='outline' className='rounded-md shadow-none'>
+					{value.name}
+				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align='start'>
 				{statuses.map((status) => (
-					<DropdownMenuItem key={status.id}>
+					<DropdownMenuItem
+						key={status.id}
+						onClick={() => onChange(status)}
+					>
 						{status.name}
 					</DropdownMenuItem>
 				))}

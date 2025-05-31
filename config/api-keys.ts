@@ -9,4 +9,5 @@ export enum API_KEYS {
 	PROJECTS = '/projects',
 	SPRINTS = '/sprints',
 	TASKS = '/tasks',
+	WORKSPACE = '/workspace',
 }

@@ -12,8 +12,8 @@ export type Task = {
 	identifier: string
 	name: string
 	description?: string
-	creator: Member
-	assignee?: Member | null
+	creator: User
+	assignee?: User | null
 	status: TaskStatus
 }
 

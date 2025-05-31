@@ -16,10 +16,11 @@ export const TaskName = () => {
 	const [inputValue, setInputValue] = useState<string>(task?.name ?? '')
 
 	const onSaveEditMode = () => {
-		if (!inputValue) return
+		setIsEditing(false)
+
+		if (!inputValue || inputValue === task?.name) return
 
 		onUpdateTask({ name: inputValue })
-		setIsEditing(false)
 	}
 
 	const { ref } = useCloseOnOutsideClick<HTMLInputElement>(() => {
@@ -70,6 +71,7 @@ export const TaskName = () => {
 					/>
 					<div className='absolute right-0 flex items-center justify-end gap-2 top-11 z-10'>
 						<Button
+							disabled={inputValue === task?.name}
 							onClick={onSaveEditMode}
 							className='w-8 h-8 p-0 bg-white action hover:bg-slate-50/70 text-primary shadow-simple'
 						>

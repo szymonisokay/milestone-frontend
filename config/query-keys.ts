@@ -6,4 +6,5 @@ export enum QUERY_KEYS {
 	SPRINTS = 'sprints',
 	TASKS = 'tasks',
 	TASK_STATUS = 'task-status',
+	WORKSPACE_MEMBERS = 'workspace-members',
 }
