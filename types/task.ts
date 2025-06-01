@@ -21,7 +21,12 @@ export type AddTask = {
 	name: string
 }
 
-export type UpdateTask = Omit<Partial<Task>, 'id' | 'identifier'>
+export type UpdateTask = {
+	name?: string
+	description?: string
+	assigneeId?: string | null
+	status?: TaskStatus
+}
 
 export type TaskStatus = {
 	id: string

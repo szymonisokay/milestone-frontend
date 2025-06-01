@@ -40,7 +40,7 @@ export const Menu = ({
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
-			<DropdownMenuContent side='right' className='mt-4'>
+			<DropdownMenuContent side='right' align='start' className='mt-4'>
 				<DropdownMenuItem onClick={handleAction('edit')}>
 					Edit
 				</DropdownMenuItem>

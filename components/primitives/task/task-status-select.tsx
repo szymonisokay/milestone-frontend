@@ -1,4 +1,6 @@
-import { Button } from '@/components/ui/button'
+import { DropdownMenuItemProps } from '@radix-ui/react-dropdown-menu'
+
+import { Button, ButtonProps } from '@/components/ui/button'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -6,20 +8,34 @@ import {
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { useTaskStatus } from '@/hooks/tasks/use-task-status'
+import { cn } from '@/lib/utils'
 import { TaskStatus } from '@/types/task'
+
+type Components = {
+	button?: ButtonProps
+	menuItem?: DropdownMenuItemProps
+}
 
 type Props = {
 	value: TaskStatus
+	components?: Components
 	onChange: (status: TaskStatus) => void
 }
 
-export const TaskStatusSelect = ({ value, onChange }: Props) => {
+export const TaskStatusSelect = ({ value, components, onChange }: Props) => {
 	const { statuses } = useTaskStatus()
 
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button variant='outline' className='rounded-md shadow-none'>
+				<Button
+					{...components?.button}
+					variant='outline'
+					className={cn(
+						'rounded-md shadow-none',
+						components?.button?.className
+					)}
+				>
 					{value.name}
 				</Button>
 			</DropdownMenuTrigger>
@@ -27,7 +43,12 @@ export const TaskStatusSelect = ({ value, onChange }: Props) => {
 				{statuses.map((status) => (
 					<DropdownMenuItem
 						key={status.id}
-						onClick={() => onChange(status)}
+						{...components?.menuItem}
+						onClick={(event) => {
+							event.stopPropagation()
+
+							onChange(status)
+						}}
 					>
 						{status.name}
 					</DropdownMenuItem>
