@@ -9,3 +9,5 @@ export type Sprint = {
 }
 
 export type SprintsResponse = Sprint[]
+
+export type UpdateSprint = Partial<Omit<Sprint, 'id'>>

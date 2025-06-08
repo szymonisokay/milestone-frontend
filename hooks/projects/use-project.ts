@@ -8,6 +8,7 @@ export const useProject = (symbol: string) => {
 		queryKey: [QUERY_KEYS.PROJECTS, symbol],
 		queryFn: () => getProject(symbol),
 		retry: false,
+		staleTime: 60 * 1000,
 	})
 
 	return {

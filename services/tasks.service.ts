@@ -27,7 +27,7 @@ export const updateTask = async (
 	data: UpdateTask
 ) =>
 	await apiRequest<Task>({
-		method: 'PATCH',
+		method: 'PUT',
 		url: `${API_KEYS.SPRINTS}/${sprintId}/tasks/${taskId}`,
 		data,
 	})
