@@ -1,3 +1,5 @@
+import { Task, TaskColumn } from '@/types/task'
+
 export type AddProjectData = {
 	name: string
 	symbol: string
@@ -12,3 +14,8 @@ export type Project = {
 }
 
 export type GetProjectsResponse = Project[]
+
+export type BoardColumn = TaskColumn & {
+	tasks: Task[]
+}
+export type BoardColumns = BoardColumn[]

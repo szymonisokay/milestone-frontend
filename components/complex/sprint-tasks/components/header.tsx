@@ -5,7 +5,7 @@ import { Heading } from '@/components/primitives/heading'
 import { Button } from '@/components/ui/button'
 import { useProject } from '@/hooks/projects/use-project'
 import { useCreateSprint } from '@/hooks/sprints/use-create-sprint'
-import { useUpdateSprint } from '@/hooks/sprints/use-update-sprint'
+import { useStartSprint } from '@/hooks/sprints/use-start-sprint'
 
 export const Header = () => {
 	const { symbol: projectSymbol } = useParams()
@@ -15,7 +15,7 @@ export const Header = () => {
 	} = useSprintTasksContext()
 	const { project } = useProject(projectSymbol as string)
 	const { onCreateSprint } = useCreateSprint()
-	const { onUpdateSprint } = useUpdateSprint(sprintId)
+	const { onStartSprint } = useStartSprint(sprintId)
 
 	const tasksCount = tasks.length
 	const isBacklog = name === 'Backlog'
@@ -26,9 +26,7 @@ export const Header = () => {
 		if (isBacklog) {
 			onCreateSprint(project.id)
 		} else {
-			onUpdateSprint({
-				isActive: true,
-			})
+			onStartSprint()
 		}
 	}
 

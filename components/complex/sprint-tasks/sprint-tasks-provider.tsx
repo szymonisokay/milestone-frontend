@@ -20,11 +20,11 @@ const SprintTasksProvider = ({
 	sprint,
 	children,
 }: SprintTasksProviderProps) => {
-	const { isLoading, data: tasks } = useTasks(sprint.id)
+	const { isLoading, tasks } = useTasks(sprint.id)
 
 	return (
 		<SprintTasksContext.Provider
-			value={{ sprint, tasks: tasks ?? [], isLoadingTasks: isLoading }}
+			value={{ sprint, tasks, isLoadingTasks: isLoading }}
 		>
 			{children}
 		</SprintTasksContext.Provider>

@@ -9,7 +9,7 @@ export const useTasks = (sprintId: string) => {
 	})
 
 	return {
-		data,
+		tasks: data ?? [],
 		isLoading,
 	}
 }

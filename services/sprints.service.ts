@@ -7,6 +7,11 @@ export const getSprints = async (projectId: string) =>
 		url: `${API_KEYS.SPRINTS}/${projectId}`,
 	})
 
+export const getActiveSprint = async (projectId: string) =>
+	await apiRequest<Sprint>({
+		url: `${API_KEYS.SPRINTS}/${projectId}/active`,
+	})
+
 export const createSprint = async (projectId: string) =>
 	await apiRequest<Sprint>({
 		url: `${API_KEYS.SPRINTS}`,

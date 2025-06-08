@@ -1,5 +1,6 @@
 import { API_KEYS } from '@/config/api-keys'
 import { AddProjectData, GetProjectsResponse, Project } from '@/types/projects'
+import { TaskColumn } from '@/types/task'
 import { apiRequest } from '@/utils/request'
 
 export const addProject = async (data: AddProjectData) =>
@@ -19,4 +20,10 @@ export const getProject = async (symbol: string) =>
 	await apiRequest<Project>({
 		method: 'GET',
 		url: `${API_KEYS.PROJECTS}/${symbol}`,
+	})
+
+export const getProjectBoardColumns = async (projectId: string) =>
+	await apiRequest<TaskColumn[]>({
+		method: 'GET',
+		url: `${API_KEYS.PROJECTS}/${projectId}/board-columns`,
 	})

@@ -1,3 +1,4 @@
+import { Project } from '@/types/projects'
 import { MemberRoles } from '@/types/role'
 import { User } from '@/types/user'
 
@@ -33,4 +34,11 @@ export type TaskStatus = {
 	name: string
 	isCustom: boolean
 	workspaceId: string | null
+}
+
+export type TaskColumn = {
+	id: string
+	color: string
+	status: TaskStatus
+	project: Project
 }
